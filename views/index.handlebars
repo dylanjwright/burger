@@ -7,20 +7,30 @@
 <br>
     <div class="row">
         <div class="col-3 text-center" id="enterSide">
-            {{#each burger_data}}
-                {{#unless this.devoured}}
+            <p>
+            {{#each burger_db}}
+                {{#unless devoured}}
+            </p>
+                
         </div>
         <div class="col-3 text-center">
-            <pre>{{this.id}}, {{this.burger_name}}</pre>
+            <p>{{id}}, {{burger_name}}</p>
         </div>
         <div class="col-6 text-center" id="devourSide">
-            <form method="POST" action="/burgers/update?_method=PUT" class="button-size">
-            <input type="hidden" name="burger_id" type="text" value={{this.id}}>
+            <form method="POST" action="/" class="button-size">
+            <input name="burger_id" type="text" value={{this.id}}>
             <br>
             <button type="submit" class="btn btn-default">DEVOUR</button>
             </form>
         </div>
         {{/unless}}
+        {{/each}}
+    </div>
+    <div class="col-6">
+        {{#each burger_data}}
+            {{#if this.devoured}}
+                <input class="form-control" type="text" placeholder="{{id}}.{{burger_name}}">
+            {{/if}}
         {{/each}}
     </div>
 </div>
